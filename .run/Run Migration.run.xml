@@ -2,7 +2,7 @@
   <configuration default="false" name="Run Migration" type="DatabaseScript">
     <script-file value="$PROJECT_DIR$/src/main/resources/init.sql" />
     <script-mode>FILE</script-mode>
-    <data-source id="3c354546-90d0-4a06-977f-32090e22e160" namespace="schema/&quot;jobeed&quot;" />
+    <data-source id="c4cfd7f8-9175-430a-89c0-32400980eee3" namespace="schema/&quot;jobeed&quot;" />
     <method v="2" />
   </configuration>
 </component>

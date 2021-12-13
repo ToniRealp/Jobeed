@@ -27,6 +27,9 @@ services:
       - './target:/usr/local/tomcat/webapps'
     environment:
       - CATALINA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      - MYSQL_USER=mysql
+      - MYSQL_PWD=prac
+      - MYSQL_URL=mysql://mysql
     depends_on:
       - mysql
     networks:

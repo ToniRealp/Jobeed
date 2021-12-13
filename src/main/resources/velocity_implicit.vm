@@ -1,0 +1,4 @@
+#* @implicitly included *#
+#* @vtlvariable name="isLoggedIn" type="java.lang.Boolean" *#
+#* @vtlvariable name="currentUser" type="platform.users.application.UserQueryResult" *#
+#* @vtlvariable name="tweets" type="java.util.List<platform.tweet.application.TweetQueryResult>" *#

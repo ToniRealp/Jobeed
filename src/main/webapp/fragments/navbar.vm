@@ -1,0 +1,61 @@
+<nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                         alt="Workflow">
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="home" x-data
+                           :class="{'bg-gray-900 text-white': window.location.href.includes('/home')}"
+                           class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        #if($isLoggedIn)
+                            <a href="explore" x-data
+                               :class="{'bg-gray-900 text-white': window.location.href.includes('/explore')}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Explore</a>
+                            <a href="profile?userId=$currentUser.id()" x-data
+                               :class="{'bg-gray-900 text-white': window.location.href.includes('/profile')}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Profile</a>
+                            <a href="followed" x-data
+                               :class="{'bg-gray-900 text-white': window.location.href.includes('/followed')}"
+                               class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Followed</a>
+                        #end
+                    </div>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-4 flex items-center md:ml-6">
+                    #if(!$isLoggedIn)
+                        <a href="login"
+                           class="hover:text-gray-100 rounded-md text-sm font-medium text-white px-3 py-2">Login</a>
+                        <a href="register"
+                           class="ml-4 bg-indigo-500 hover:bg-indigo-600 rounded-md text-sm font-medium text-white px-3 py-2">Register</a>
+                    #else
+                        <a href="logout"
+                           class="bg-indigo-500 hover:bg-indigo-600 rounded-md text-sm font-medium text-white px-3 py-2">Logout</a>
+                    #end
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="md:hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="#"
+               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Explore</a>
+            <a href="#"
+               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Profile</a>
+            <a href="#"
+               class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Settings</a>
+        </div>
+        <div class="pt-4 pb-3 border-t border-gray-700">
+            <div class="flex items-center px-5">
+                <a href="logout"
+                   class="bg-indigo-500 text-center hover:bg-indigo-600 rounded-md text-sm font-medium w-full text-white px-3 py-2">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>

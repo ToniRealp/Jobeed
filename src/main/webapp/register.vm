@@ -1,0 +1,170 @@
+#* @vtlvariable name="interests" type="java.util.List<platform.interests.domain.Interest>" *#
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div>
+            <img alt="jobeed logo" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                 class="mx-auto h-12 w-auto"/>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Create your account
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Or
+                <a href="login" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    login to your account
+                </a>
+            </p>
+        </div>
+        #parse('/fragments/error.vm')
+        <form action="register" method="POST" class="mt-8 space-y-6">
+            <input name="id" type="hidden" x-data="{}" x-bind:value="uuidv4()"/>
+            <div class="rounded-md shadow-sm -space-y-px">
+                <div>
+                    <label for="email-address" class="sr-only">Email address</label>
+                    <input
+                            autocomplete="email"
+                            id="email-address"
+                            name="email"
+                            required
+                            type="email"
+                            placeholder="Email address"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    />
+                </div>
+                <div>
+                    <label for="email-address" class="sr-only">Name</label>
+                    <input
+                            autocomplete="name"
+                            id="name"
+                            name="name"
+                            required
+                            type="text"
+                            placeholder="Name"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    />
+                </div>
+                <div>
+                    <label for="password" class="sr-only">Password</label>
+                    <input
+                            autocomplete="current-password"
+                            id="password"
+                            name="password"
+                            required
+                            type="password"
+                            placeholder="Password"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Password should have at least 8 characters, 1 number and 1 uppercase letter"
+                    />
+                </div>
+                <div>
+                    <label for="confirmPassword" class="sr-only">Confirm password</label>
+                    <input
+                            autocomplete="confirm-password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            required
+                            type="password"
+                            placeholder="Confirm password"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Password should have at least 8 characters, 1 number and 1 uppercase letter"
+                    />
+                </div>
+                <div>
+                    <label for="birthday" class="sr-only">Birthday</label>
+                    <input
+                            id="birthday"
+                            name="birthday"
+                            required
+                            type="date"
+                            placeholder="Confirm password"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    />
+                </div>
+                <div class="relative">
+                    <label for="gender" class="sr-only">Gender</label>
+                    <select
+                            x-data="{value: '', visible: false}"
+                            x-model="value"
+                            x-bind:class="value === '' ? 'text-gray-500' : 'text-gray-900'"
+                            x-on:focus="visible = false"
+                            id="gender"
+                            name="gender"
+                            required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 bg-white border border-gray-300 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    >
+                        <option value="" x-show="visible">Gender</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="OTHER">Other</option>
+                    </select>
+                    <span class="absolute z-30 top-2 right-3">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                             class="h-5 w-5 text-gray-400">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                        </svg>
+                    </span>
+                </div>
+                <div class="relative">
+                    <label for="employment" class="sr-only">Employment</label>
+                    <select
+                            x-data="{value: '', visible: false}"
+                            x-model="value"
+                            x-on:focus="visible = false"
+                            x-bind:class="value === '' ? 'text-gray-500' : 'text-gray-900'"
+                            id="employment"
+                            name="employment"
+                            required
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 bg-white border border-gray-300 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    >
+                        <option value="" x-show="visible">Employment status</option>
+                        <option value="FULL">Full time</option>
+                        <option value="PART_TIME">Part time</option>
+                        <option value="FREELANCE">Freelance</option>
+                        <option value="UNEMPLOYED">Unemployed</option>
+                    </select>
+                    <span class="absolute z-30 top-2 right-3">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                             class="h-5 w-5 text-gray-400">
+                            <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-width="2"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div>
+                    <label for="interests" class="sr-only">Interests</label>
+                    <select
+                            x-data="{value: '', visible: false}"
+                            x-model="value"
+                            x-bind:class="value === '' ? 'text-gray-500' : 'text-gray-900'"
+                            id="interests"
+                            multiple
+                            name="interests"
+                            required
+                            class="overflow-hidden appearance-none rounded-none relative block w-full px-3 py-2 bg-white border border-gray-300 placeholder-gray-500 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    >
+                        #foreach($interest in $interests)
+                            <option value="$interest.id().value()">$interest.name()</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button
+                        type="submit"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                             xmlns="http://www.w3.org/2000/svg"
+                             class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400">
+                            <path clip-rule="evenodd"
+                                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                  fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    Sign up
+                </button>
+            </div>
+        </form>
+    </div>

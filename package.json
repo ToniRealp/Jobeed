@@ -1,0 +1,13 @@
+{
+  "name": "jobeed-assets",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.3",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-postcss": "^9.0.0",
+    "tailwindcss": "^2.2.2"
+  }
+}

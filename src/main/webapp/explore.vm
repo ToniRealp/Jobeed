@@ -1,0 +1,46 @@
+#* @vtlvariable name="users" type="java.util.List<platform.users.application.UserQueryResult>" *#
+#parse('/fragments/navbar.vm')
+
+<main class="bg-gray-100">
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 min-h-screen">
+        <ul class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
+            #foreach($user in $users)
+                <li>
+                    <div class="space-y-4">
+                        <a href="profile?userId=$user.id()">
+                            <img class="object-cover shadow-lg rounded-lg w-full h-64"
+                                 src="$user.picture()"
+                                 alt="$user.name() profile picture">
+                        </a>
+                        <div>
+                            <div class="flex justify-between items-baseline text-lg leading-6 font-medium space-y-1">
+                                <h3>$user.name()</h3>
+                                <p class="text-indigo-600" x-data x-text="toTitleCase('$user.employment()')"></p>
+                            </div>
+                            ## Social Media
+                            <ul class="space-x-2 flex items-center mt-2">
+                                <li>
+                                    <a href="mailto:$user.email()" class="text-gray-400 hover:text-gray-500" title="$user.email()">
+                                        <span class="sr-only">Email</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li class="text-gray-400 hover:text-gray-500" x-data :title="new Date('$user.birthday()').toDateString()">
+                                    <span class="sr-only">Birthday</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z" />
+                                    </svg>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            #end
+        </ul>
+    </div>
+</main>
+<script>
+    const toTitleCase = str => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()).replace("_", " ");
+</script>

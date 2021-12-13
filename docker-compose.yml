@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    environment:
+      MYSQL_USER: 'mysql'
+      MYSQL_PASSWORD: 'prac'
+      MYSQL_DATABASE: 'jobeed'
+      MYSQL_ROOT_PASSWORD: 'password'
+    command: [ "--log_bin_trust_function_creators=1" ]
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql:/var/lib/mysql
+#      - ./src/main/resources/init.sql:/docker-entrypoint-initdb.d
+    networks:
+      - jobeed
+
+  tomcat:
+    container_name: tomcat
+    image: tomcat:9.0.46-jdk11
+    ports:
+      - '8080:8080'
+      - '5005:5005'
+    volumes:
+      - './target:/usr/local/tomcat/webapps'
+    environment:
+      - CATALINA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    depends_on:
+      - mysql
+    networks:
+      - jobeed
+
+volumes:
+  mysql:
+
+networks:
+  jobeed:
+    driver: bridge
